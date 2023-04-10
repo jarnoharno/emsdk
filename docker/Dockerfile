@@ -108,6 +108,7 @@ RUN echo "## Update and install packages" \
         libidn12 \
         cmake \
         openjdk-11-jre-headless \
+        ninja-build \
     # Standard Cleanup on Debian images
     && apt-get -y clean \
     && apt-get -y autoclean \
@@ -119,15 +120,19 @@ RUN echo "## Update and install packages" \
     && rm -rf /usr/share/man/??_* \
     && echo "## Done"
 
+RUN echo "## Install tsembind" \
+    && npm i -g tsembind \
+    && echo "## Done"
+
 # ------------------------------------------------------------------------------
 # Use commonly used /src as working directory
 WORKDIR /src
 
-LABEL maintainer="kontakt@trzeci.eu" \
+LABEL maintainer="jarno.harno@iki.fi" \
       org.label-schema.name="emscripten" \
-      org.label-schema.description="The official container with Emscripten SDK" \
-      org.label-schema.url="https://emscripten.org" \
-      org.label-schema.vcs-url="https://github.com/emscripten-core/emsdk" \
+      org.label-schema.description="A multi-arch Emscripten SDK container" \
+      org.label-schema.url="https://github.com/jarnoharno/emsdk" \
+      org.label-schema.vcs-url="https://github.com/jarnoharno/emsdk" \
       org.label-schema.docker.dockerfile="/docker/Dockerfile"
 
 # ------------------------------------------------------------------------------

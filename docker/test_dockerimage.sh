@@ -15,6 +15,8 @@ em++ --version
 emcc --version
 java -version
 cmake --version
+ninja --version
+tsembind --version
 
 exit_code=0
 
